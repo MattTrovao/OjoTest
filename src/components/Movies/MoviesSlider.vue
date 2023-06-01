@@ -1,7 +1,10 @@
 <template>
   <SectionTitle title="Movies" />
 
-  <MoviesSkeleton />
+  <div class="grid grid--4">
+    <MoviesCard />
+    <MoviesCard />
+  </div>
 </template>
 
 <script>
