@@ -1,0 +1,48 @@
+* {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+html,
+body {
+	font-size: 14px;
+}
+
+$S: .9rem;
+$D: 1rem;
+$MD: 1.5rem;
+$L: 2rem;
+$XL: 2.5rem;
+
+$light: 300;
+$medium: 400;
+$bold: 700;
+
+.fontS {
+	font-size: $S;
+}
+
+.fontD {
+	font-size: $D;
+}
+
+.fontMD {
+	font-size: $MD;
+}
+
+.fontL {
+	font-size: $L;
+}
+
+.fontXL {
+	font-size: $XL;
+}
+
+b,
+strong,
+.bold {
+	font-weight: $bold;
+}
+
+.italic{
+	font-style: italic;
+}
