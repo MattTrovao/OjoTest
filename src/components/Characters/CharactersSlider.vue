@@ -1,11 +1,11 @@
 <template>
-  <SectionTitle title="Movies" />
+  <SectionTitle title="Characters" />
 
   <Swiper
-    v-if="movieData"
-    :slides-per-view="3"
+    v-if="CharacterData"
+    :slides-per-view="5"
     :space-between="20"
-    :slidesPerGroup="3"
+    :slidesPerGroup="5"
     :modules="modules"
     :navigation="true"
     :loop="true"
@@ -27,14 +27,14 @@
       },
     }"
   >
-    <template v-for="data in movieData" :key="data.index">
+    <template v-for="data in CharacterData" :key="data.index">
       <SwiperSlide>
-        <MoviesCard :movie="data" />
+        <CharactersCard :character="data"/>
       </SwiperSlide>
     </template>
   </Swiper>
 
-  <MoviesSkeleton v-else />
+  <CharactersSkeleton v-else />
 </template>
 
 <script>
@@ -53,22 +53,22 @@ export default {
     SwiperSlide,
   },
   setup() {
-    const movieData = ref(null);
-    async function getMovieData() {
-      const response = await api.get("films");
+    const CharacterData = ref(null);
+    async function getCharacterData() {
+      const response = await api.get("people");
 
       if (response.data.results) {
-        movieData.value = response.data.results;
+        CharacterData.value = response.data.results;
       }
     }
 
     onMounted(() => {
-      getMovieData();
+      getCharacterData();
     });
 
     return {
       modules: [Autoplay,  Navigation],
-      movieData,
+      CharacterData,
     };
   },
 };

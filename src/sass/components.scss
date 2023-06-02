@@ -90,7 +90,7 @@
 }
 
 .page {
-	padding-top: 90px;
+	padding: 90px 0 50px;
 }
 
 .sectionTitle {
@@ -114,7 +114,7 @@
 	h2 {
 		margin: 0;
 		background: $white;
-		color: $yellow;
+		color: $purple;
 		padding: 0 25px;
 		z-index: 2;
 		position: relative;
@@ -124,7 +124,7 @@
 }
 
 .movieCard {
-	width: 300px;
+	width: 100%;
 	border-radius: 8px;
 	overflow: hidden;
 	position: relative;
@@ -182,8 +182,18 @@
 		}
 	}
 
+	.movieCard__mask {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		z-index: 3;
+		-webkit-filter:invert(1) grayscale(1) brightness(100);
+		filter:invert(1) grayscale(1) brightness(100);
+	}
+
 	.movieCard__data {
-		background: $yellow;
+		background: $gray600;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -194,6 +204,7 @@
 
 		h2{
 			margin-bottom: 10px;
+			color: $white;
 		}
 
 		p {
@@ -204,7 +215,49 @@
 			transform: translateY(50px);
 			opacity: 0;
 			transition: inherit;
-			margin: 0;
+			margin: 0 0 10px;
+			color: $white;
 		}
 	}
+}
+
+.charCard{
+	border: 2px solid $gray600;
+	border-radius: 8px;	
+	overflow: hidden;
+
+	&.skeleton{
+		.charCard__name,
+		.charCard__data{
+			padding: 10px;
+		}
+	}
+
+	.charCard__name{
+		width: 100%;
+		background: $gray600;
+		padding: .8rem 0;
+		text-align: center;
+		margin-bottom: 2rem;
+		h2{
+			color: $white;
+			margin: 0;
+			font-size: $MD;
+		}
+	}
+
+	.charCard__data{
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		text-align: center;
+		gap: 1.5rem;
+
+		p{
+			font-size: $D;
+			b{
+				display: block;
+			}
+		}
+	}
+
 }

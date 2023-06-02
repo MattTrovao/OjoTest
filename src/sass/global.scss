@@ -211,3 +211,23 @@ $sizes: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95,
 		padding: 0 2rem;
 	}
 }
+
+.swiper-button-next,
+.swiper-button-prev{
+	background: $purple;
+	width: 30px !important;
+	height: 30px !important;
+	color: $white !important;
+	border-radius: 50%;
+	padding: 10px;
+	box-sizing: border-box;
+	transition: $transition;
+
+	&:hover{
+		box-shadow: 0 0 6px 4px rgba($yellow, .6);
+	}
+
+	&::after{
+		font-size: $S !important;
+	}
+}
