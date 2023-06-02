@@ -1,3 +1,17 @@
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 .header {
 	$logoSize: 50px;
 
@@ -19,7 +33,7 @@
 
 		&:hover {
 			img {
-				transform: rotate(360deg) scale(.98);
+				transform: rotate(360deg) scale(.85);
 
 				&.jedi {
 					opacity: 0;
@@ -128,26 +142,13 @@
 	border-radius: 8px;
 	overflow: hidden;
 	position: relative;
+	display: block;
 
 	&.skeleton {
 		.movieCard__img {
 			background: linear-gradient(-45deg, $gray100, $gray600, $black);
 			background-size: 400% 400%;
 			animation: gradient 10s ease infinite;
-
-			@keyframes gradient {
-				0% {
-					background-position: 0% 50%;
-				}
-
-				50% {
-					background-position: 100% 50%;
-				}
-
-				100% {
-					background-position: 0% 50%;
-				}
-			}
 		}
 
 		.movieCard__data {
@@ -157,13 +158,14 @@
 	}
 
 	&:hover {
-		.movieCard__img{
-			img{
+		.movieCard__img {
+			img {
 				transform: scale(1.2);
 			}
 		}
-		.movieCard__data{
-			p{
+
+		.movieCard__data {
+			p {
 				position: relative;
 				transform: unset;
 				opacity: 1;
@@ -186,10 +188,10 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		z-index: 3;
-		-webkit-filter:invert(1) grayscale(1) brightness(100);
-		filter:invert(1) grayscale(1) brightness(100);
+		-webkit-filter: invert(1) grayscale(1) brightness(100);
+		filter: invert(1) grayscale(1) brightness(100);
 	}
 
 	.movieCard__data {
@@ -202,7 +204,7 @@
 		text-align: center;
 		transition: $transition;
 
-		h2{
+		h2 {
 			margin-bottom: 10px;
 			color: $white;
 		}
@@ -221,43 +223,121 @@
 	}
 }
 
-.charCard{
+.charCard {
 	border: 2px solid $gray600;
-	border-radius: 8px;	
+	border-radius: 8px;
 	overflow: hidden;
 
-	&.skeleton{
+	&.skeleton {
+
 		.charCard__name,
-		.charCard__data{
+		.charCard__data {
 			padding: 10px;
 		}
 	}
 
-	.charCard__name{
+	.charCard__name {
 		width: 100%;
 		background: $gray600;
 		padding: .8rem 0;
 		text-align: center;
 		margin-bottom: 2rem;
-		h2{
+
+		h2 {
 			color: $white;
 			margin: 0;
 			font-size: $MD;
 		}
 	}
 
-	.charCard__data{
+	.charCard__data {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		text-align: center;
 		gap: 1.5rem;
 
-		p{
+		p {
 			font-size: $D;
-			b{
+
+			b {
 				display: block;
 			}
 		}
 	}
+}
 
+.movieDesc {
+	hr {
+		background: $purple;
+		border: 0;
+		height: 3px;
+		margin: 2rem auto;
+	}
+
+	p {
+		b {
+			text-align: end;
+			width: 100%;
+			display: block;
+		}
+	}
+}
+
+.movieImg {
+	width: 300px;
+	height: 100%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+.planet {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	margin: 30px auto;
+	background: $yellow;
+	border: 2px solid $white;
+	box-shadow: 0 0 8px 6px rgba($yellow, .5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: .8rem;
+
+	&.skeleton {
+		background: linear-gradient(-45deg, $gray100, $gray600, $black);
+		background-size: 400% 400%;
+		animation: gradient 10s ease infinite;
+		box-shadow: 0 0 8px 6px rgba($black, .5);
+	}
+
+	img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 3;
+		width: 70%;
+		-webkit-filter: invert(1) grayscale(1) brightness(100);
+		filter: invert(1) grayscale(1) brightness(100);
+	}
+
+	h2 {
+		margin: 0;
+		text-transform: uppercase;
+		color: $purple;
+		font-size: $MD;
+		font-weight: $bold;
+	}
+
+	p {
+		margin: 0;
+		font-size: $S;
+		font-weight: $light;
+		text-transform: capitalize;
+		text-align: center;
+	}
 }

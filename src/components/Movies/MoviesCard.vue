@@ -1,5 +1,5 @@
 <template>
-  <div :class="`movieCard ${skeleton ? 'skeleton' : ''}`">
+  <router-link :to="`${id ? '/movie/'+id : ''}`" :class="`movieCard ${skeleton ? 'skeleton' : ''}`">
     <div class="movieCard__mask" v-if="skeleton">
       <img src="../../assets/SW_logo.png" alt="Star Wars Logo">
     </div>
@@ -14,10 +14,7 @@
     <div class="movieCard__data">
       <template v-if="!skeleton">
         <h2 class="data__title">
-          <small>
-            Episode {{movie.episode_id}} -
-          </small>
-          {{movie.title}}
+          {{movie.title}} ({{movie?.episode_id}})
         </h2>
         <div class="grid grid--2">
           <p class="data__year">
@@ -29,7 +26,7 @@
         </div>
       </template>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -45,6 +42,9 @@ export default {
     },
     movie: {
       type: Object,
+    },
+    id: {
+      type: String,
     }
   },
   setup(props) {
@@ -52,11 +52,13 @@ export default {
 
     const movie = ref(props.movie)
 
+    const id = ref(props.id)
 
     return {
       getYear,
       skeleton,
-      movie
+      movie,
+      id
     };
   },
 };

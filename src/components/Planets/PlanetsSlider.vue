@@ -1,8 +1,8 @@
 <template>
-  <SectionTitle title="Movies" />
+  <SectionTitle title="Planets" />
 
   <Swiper
-    v-if="movieData"
+    v-if="planetsData.length >= 1"
     :slides-per-view="3"
     :space-between="20"
     :slidesPerGroup="3"
@@ -27,20 +27,19 @@
       },
     }"
   >
-    <template v-for="data, id in movieData" :key="id">
+    <template v-for="data in planetsData" :key="data.index">
       <SwiperSlide>
-        <MoviesCard :movie="data" :id='`${id+1}`'/>
+        <PlanetsCard :planet="data" />
       </SwiperSlide>
     </template>
   </Swiper>
 
-  <MoviesSkeleton v-else />
+  <PlanetsSkeleton v-else />
 </template>
 
 <script>
 import { onMounted, ref } from "vue";
-
-import api from "../../utils/axios.js";
+import api from "../../utils/axios";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Navigation } from "swiper";
@@ -48,27 +47,37 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default {
-  components: {
+    components: {
     Swiper,
     SwiperSlide,
   },
-  setup() {
-    const movieData = ref(null);
-    async function getMovieData() {
-      const response = await api.get("films");
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const planetList = ref(props.data);
+    const planetsData = ref([]);
 
-      if (response.data.results) {
-        movieData.value = response.data.results;
+    async function getPlanetsData() {
+      for (let p of planetList.value) {
+        let response = await api.get(p.replace("https://swapi.dev/api/", ""));
+
+        if (response.data) {
+          planetsData.value.push(response.data);
+        }
       }
     }
 
     onMounted(() => {
-      getMovieData();
+      getPlanetsData();
     });
 
     return {
       modules: [Autoplay,  Navigation],
-      movieData,
+      planetsData,
     };
   },
 };

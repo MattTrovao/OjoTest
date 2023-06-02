@@ -2,7 +2,7 @@
   <SectionTitle title="Characters" />
 
   <Swiper
-    v-if="CharacterData"
+    v-if="CharacterData.length >= 1"
     :slides-per-view="5"
     :space-between="20"
     :slidesPerGroup="5"
@@ -29,7 +29,7 @@
   >
     <template v-for="data in CharacterData" :key="data.index">
       <SwiperSlide>
-        <CharactersCard :character="data"/>
+        <CharactersCard :character="data" />
       </SwiperSlide>
     </template>
   </Swiper>
@@ -52,13 +52,30 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  setup() {
-    const CharacterData = ref(null);
+  props: {
+    inMovie: {
+      type: Array,
+      required: false,
+    },
+  },
+  setup(props) {
+    const inMovie = ref(props.inMovie);
+    const CharacterData = ref([]);
     async function getCharacterData() {
-      const response = await api.get("people");
+      if (inMovie.length != 0) {
+        for (let c of inMovie.value) {
+          let response = await api.get(c.replace("https://swapi.dev/api/", ""));
 
-      if (response.data.results) {
-        CharacterData.value = response.data.results;
+          if (response.data) {
+            CharacterData.value.push(response.data);
+          }
+        }
+      } else {
+        const response = await api.get("people");
+
+        if (response.data.results) {
+          CharacterData.value = response.data.results;
+        }
       }
     }
 
@@ -67,7 +84,7 @@ export default {
     });
 
     return {
-      modules: [Autoplay,  Navigation],
+      modules: [Autoplay, Navigation],
       CharacterData,
     };
   },

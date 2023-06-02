@@ -27,6 +27,9 @@ import MoviesSkeleton from "@/components/Movies/MoviesSkeleton.vue";
 import CharactersCard from "@/components/Characters/CharactersCard.vue";
 import CharactersSkeleton from "@/components/Characters/CharactersSkeleton.vue";
 
+import PlanetsCard from "@/components/Planets/PlanetsCard.vue";
+import PlanetsSkeleton from "@/components/Planets/PlanetsSkeleton.vue";
+
 app.component("Page", Page);
 app.component("Container", Container);
 app.component("SectionTitle", SectionTitle);
@@ -38,6 +41,9 @@ app.component("MoviesSkeleton", MoviesSkeleton);
 
 app.component("CharactersCard", CharactersCard);
 app.component("CharactersSkeleton", CharactersSkeleton);
+
+app.component("PlanetsCard", PlanetsCard);
+app.component("PlanetsSkeleton", PlanetsSkeleton);
 
 
 app.mount("#app");
