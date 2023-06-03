@@ -62,7 +62,7 @@ export default {
     const inMovie = ref(props.inMovie);
     const CharacterData = ref([]);
     async function getCharacterData() {
-      if (inMovie.length != 0) {
+      if (inMovie.value != undefined) {
         for (let c of inMovie.value) {
           let response = await api.get(c.replace("https://swapi.dev/api/", ""));
 

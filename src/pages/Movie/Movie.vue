@@ -1,6 +1,18 @@
 <template>
   <template v-if="movieData == null">
-    <p>Carregando</p>
+    <SectionTitle title="..." />
+
+    <div class="grid grid--2">
+      <div class="movieDesc skeleton"></div>
+      <div class="movieImg skeleton"></div>
+    </div>
+
+    <SectionTitle title="..." />
+    <PlanetsSkeleton />
+
+    <SectionTitle title="..." />
+    <CharactersSkeleton />
+
   </template>
 
   <template v-else>
@@ -48,6 +60,8 @@
 
     <CharactersSlider :inMovie="charactersList" />
 
+
+    <Reviews />
   </template>
 </template>
 
@@ -59,10 +73,13 @@ import { formatDate } from '../../utils/format';
 import PlanetsSlider from '../../components/Planets/PlanetsSlider.vue'
 import CharactersSlider from '../../components/Characters/CharactersSlider.vue'
 
+import Reviews from '../../components/Elements/Reviews.vue'
+
 export default {
   components: {
     PlanetsSlider,
     CharactersSlider,
+    Reviews,
   },
   props: ["id"],
   setup(props) {

@@ -14,7 +14,7 @@
     <div class="movieCard__data">
       <template v-if="!skeleton">
         <h2 class="data__title">
-          {{movie.title}} ({{movie?.episode_id}})
+          {{movie.title}}
         </h2>
         <div class="grid grid--2">
           <p class="data__year">

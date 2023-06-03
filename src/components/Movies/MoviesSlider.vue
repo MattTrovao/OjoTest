@@ -15,17 +15,6 @@
       disableOnInteraction: false,
       pauseOnMouseEnter: true,
     }"
-    :breakpoints="{
-      '768': {
-        slidesPerView: 2,
-      },
-      '1024': {
-        slidesPerView: 3,
-      },
-      '1600': {
-        slidesPerView: 3,
-      },
-    }"
   >
     <template v-for="data, id in movieData" :key="id">
       <SwiperSlide>

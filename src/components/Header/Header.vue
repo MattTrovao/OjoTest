@@ -8,8 +8,8 @@
         </router-link>
 
         <div class="header__search">
-          <input class="search__bar" placeholder="Pesquisar personagem"/>
-          <button class="search__btn">
+          <input class="search__bar" placeholder="Pesquisar personagem" disabled/>
+          <button class="search__btn" disabled>
             <font-awesome-icon icon="magnifying-glass" />
           </button>
         </div>
