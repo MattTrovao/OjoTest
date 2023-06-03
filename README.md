@@ -1,7 +1,29 @@
-# Vue 3 + Vite
+# Pontos a serem ajustados
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- Fazer busca do projeto
+- Responsivo
 
-## Recommended IDE Setup
+# Copiando Projeto 
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+```sh
+git clone https://github.com/MattTrovao/OjoTest.git
+cd OjoTest
+npm install
+npm run dev
+```
+
+# Bibliotecas
+- fortawesome/fontawesome-svg-core: ^6.4.0,
+- fortawesome/free-brands-svg-icons: ^6.4.0,
+- fortawesome/free-regular-svg-icons: ^6.4.0,
+- fortawesome/free-solid-svg-icons: ^6.4.0,
+- fortawesome/vue-fontawesome: ^3.0.3,
+- axios: ^1.4.0,
+- swiper: ^9.3.2,
+- vue: ^3.2.47,
+- vue-router: ^4.2.2,
+- vue-template-compiler: ^2.7.14
+- vitejs/plugin-vue: ^4.1.0,
+- sass: ^1.62.1,
+- sass-loader: ^13.3.1,
+- vite: ^4.3.9
